@@ -19,7 +19,7 @@ const Register = () => {
 
   try {
     const response = await fetch(
-      "https://backend-nodejs-zeta.vercel.app/register",
+      "https://backend-nodejs-zeta.vercel.app/teachers/register",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
