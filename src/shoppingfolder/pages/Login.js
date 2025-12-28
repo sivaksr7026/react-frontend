@@ -16,7 +16,7 @@ export default function Login() {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/teachers/login",
+      "https://backend-nodejs-zeta.vercel.app/login",
       { email, password }
     );
 
