@@ -1,0 +1,69 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./Login.css";
+import { toast } from 'react-toastify';
+
+
+export default function Login() {
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await axios.post(
+      "http://localhost:5000/teachers/login",
+      { email, password }
+    );
+
+    localStorage.setItem("token", res.data.token);
+
+    toast.success("Login successfully", { closeButton: false });
+    navigate("/profile");
+
+  } catch (error) {
+    if (error.response) {
+      toast.error("Invalid Email or Password", { closeButton: false });
+    } else {
+      toast.warning(
+        "Technical server issue. Please try again later",
+        { closeButton: false }
+      );
+    }
+  }
+};
+
+  return (
+    <div className="login-container">
+      <form className="login-box" onSubmit={handleSubmit}>
+        <h2>Login</h2>
+
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <button type="submit">Login</button>
+
+        <p className="register-link">
+          Don’t have an account? <Link to="/register">Register</Link>
+        </p>
+      </form>
+    </div>
+  );
+}
