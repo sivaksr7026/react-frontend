@@ -15,7 +15,7 @@ const Profile = () => {
       return;
     }
 
-    axios.get("http://localhost:5000/teachers/myprofile", {
+    axios.get("https://backend-nodejs-zeta.vercel.app/myprofile", {
       headers: {
          'x-auth-token' : token  
       }
