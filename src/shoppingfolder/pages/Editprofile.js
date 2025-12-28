@@ -19,7 +19,7 @@ const Editprofile = () => {
     const fetchTeacher = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/teachers/edit/${id}`,  
+          `https://backend-nodejs-zeta.vercel.app/edit/${id}`,  
           {
             headers: {
               'x-auth-token' : token          
@@ -47,7 +47,7 @@ const Editprofile = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/teachers/update/${id}`,  
+        `https://backend-nodejs-zeta.vercel.app/update/${id}`,  
         data,
         {
           headers: {
