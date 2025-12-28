@@ -32,7 +32,7 @@ const Profile = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/teachers/delete/${id}`,
+        `https://backend-nodejs-zeta.vercel.app/delete/${id}`,
         {
           headers: {
             'x-auth-token' : token  
